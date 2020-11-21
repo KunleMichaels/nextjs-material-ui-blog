@@ -29,7 +29,7 @@ const useStyles = makeStyles({
   toolbarRight: {
     right: 0,
     position: 'absolute',
-    paddingRight: '10%',
+    paddingRight: '5%',
   },
 })
 
