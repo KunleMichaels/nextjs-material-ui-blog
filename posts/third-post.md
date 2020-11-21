@@ -3,6 +3,7 @@ title: FAQ
 description: "Frequently Asked Questions"
 date: '2020-06-02'
 featured: true
+topics: hooks
 ---
 
 ## What keyboard do you use?

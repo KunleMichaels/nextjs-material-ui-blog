@@ -2,7 +2,8 @@
 title: FAQ
 description: "Frequently Asked Questions"
 date: '2020-06-30'
-featured: false
+featured: true
+topics: Golang,React,GraphQL
 ---
 
 ## What keyboard do you use?

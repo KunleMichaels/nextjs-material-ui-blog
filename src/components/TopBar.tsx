@@ -8,8 +8,8 @@ import Button from '@material-ui/core/Button'
 import AppBar from '@material-ui/core/AppBar'
 import useScrollTrigger from '@material-ui/core/useScrollTrigger'
 import { makeStyles } from '@material-ui/core/styles'
-import { useTheme } from '@emotion/react'
 import { ToggleThemeContext } from '../theme'
+import Link from 'next/link'
 
 const useStyles = makeStyles({
   show: {
@@ -24,7 +24,7 @@ const useStyles = makeStyles({
     paddingLeft: '10%',
   },
   toolbarContent: {
-    paddingLeft: '10%',
+    paddingLeft: 50,
   },
   toolbarRight: {
     right: 0,
@@ -41,15 +41,21 @@ export const TopBar = (): ReactElement => {
   return (
     <AppBar className={trigger ? classes.hide : classes.show} position="sticky">
       <Toolbar className={classes.toolbar}>
-        <Typography variant="h6">DevFullStack</Typography>
+        <Link href="/">
+          <a>
+            <Typography variant="h6">DevFullStack</Typography>
+          </a>
+        </Link>
         <div className={classes.toolbarContent}>
-          <Button color="inherit">
-            <CodeIcon />
-            &nbsp;Topics
-          </Button>
+          <Link href="/topics">
+            <Button variant="text" color="inherit">
+              <CodeIcon />
+              &nbsp;Topics
+            </Button>
+          </Link>
         </div>
         <div className={classes.toolbarRight}>
-          <Button color="inherit" onClick={toggleTheme}>
+          <Button variant="text" color="inherit" onClick={toggleTheme}>
             {isDark ? <SunIcon /> : <MoonIcon />}
           </Button>
         </div>

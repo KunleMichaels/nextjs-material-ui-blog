@@ -41,5 +41,22 @@ const getPostFromFile = (fullPath: string, id: string, includeContent = false): 
     id,
     ...matterResult.data,
     content: includeContent ? matterResult.content : null,
+    topics: matterResult.data.topics.split(','),
   } as PostData
+}
+
+export const getSortedTopics = (): string[] => {
+  const posts = getSortedPostsData()
+
+  const allTopics = posts.reduce((prev: string[], current: PostData) => {
+    return [...prev, ...current.topics]
+  }, [])
+
+  const map: Record<string, number> = {}
+
+  allTopics.map((t) => {
+    map[t] = allTopics.filter((topic) => t === topic).length
+  })
+
+  return Array.from(new Set(allTopics)).sort((a, b) => map[b] - map[a])
 }

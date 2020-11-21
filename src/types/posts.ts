@@ -5,4 +5,5 @@ export type PostData = {
   title: string
   description: string
   featured: boolean
+  topics: string[]
 }
