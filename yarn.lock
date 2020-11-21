@@ -412,37 +412,28 @@
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-9.1.0.tgz#6c9eafc78c1529248f8f4d92b0799a712b6052c6"
   integrity sha512-i9YbZPN3QgfighY/1X1Pu118VUz2Fmmhd6b2n0/O8YVgGGfw0FbUYoA97k7FkpGJ+pLCFEDLUmAPPV4D1kpeFw==
 
-"@material-ui/core@^5.0.0-alpha.16":
-  version "5.0.0-alpha.16"
-  resolved "https://registry.yarnpkg.com/@material-ui/core/-/core-5.0.0-alpha.16.tgz#3dd27d503489a4fdbed9c932f6f8850d989b5874"
-  integrity sha512-jjzZMgnqPjJG+MK4+z8Jsv1SXGDhHrFy0X8zsqU5mL8Hxt9HQuIyy8poFfzi+IuQxvOpP04TIBU3umWg5JvuJA==
+"@material-ui/core@^4.11.0":
+  version "4.11.0"
+  resolved "https://registry.yarnpkg.com/@material-ui/core/-/core-4.11.0.tgz#b69b26e4553c9e53f2bfaf1053e216a0af9be15a"
+  integrity sha512-bYo9uIub8wGhZySHqLQ833zi4ZML+XCBE1XwJ8EuUVSpTWWG57Pm+YugQToJNFsEyiKFhPh8DPD0bgupz8n01g==
   dependencies:
     "@babel/runtime" "^7.4.4"
-    "@material-ui/styled-engine" "^5.0.0-alpha.16"
-    "@material-ui/styles" "^5.0.0-alpha.15"
-    "@material-ui/system" "^5.0.0-alpha.16"
+    "@material-ui/styles" "^4.10.0"
+    "@material-ui/system" "^4.9.14"
     "@material-ui/types" "^5.1.0"
-    "@material-ui/utils" "^5.0.0-alpha.15"
-    "@popperjs/core" "^2.4.4"
+    "@material-ui/utils" "^4.10.2"
     "@types/react-transition-group" "^4.2.0"
     clsx "^1.0.4"
-    csstype "^3.0.2"
     hoist-non-react-statics "^3.3.2"
+    popper.js "1.16.1-lts"
     prop-types "^15.7.2"
-    react-is "^16.8.0 || ^17.0.0"
+    react-is "^16.8.0"
     react-transition-group "^4.4.0"
 
 "@material-ui/icons@^4.9.1":
   version "4.9.1"
   resolved "https://registry.yarnpkg.com/@material-ui/icons/-/icons-4.9.1.tgz#fdeadf8cb3d89208945b33dbc50c7c616d0bd665"
   integrity sha512-GBitL3oBWO0hzBhvA9KxqcowRUsA0qzwKkURyC8nppnC3fw54KPKZ+d4V1Eeg/UnDRSzDaI9nGCdel/eh9AQMg==
-  dependencies:
-    "@babel/runtime" "^7.4.4"
-
-"@material-ui/styled-engine@^5.0.0-alpha.16":
-  version "5.0.0-alpha.16"
-  resolved "https://registry.yarnpkg.com/@material-ui/styled-engine/-/styled-engine-5.0.0-alpha.16.tgz#489882afb434af1b6b4ca4e130c03f5d1e0774cc"
-  integrity sha512-3KcFoWQmLpWfmoNiSSm07yE52SANnzdDYvj1OOclUViqOlvXGPvq4Lqz7XMXybBu1OsT/v1A/MvARJ5/bcNIXw==
   dependencies:
     "@babel/runtime" "^7.4.4"
 
@@ -468,35 +459,14 @@
     jss-plugin-vendor-prefixer "^10.0.3"
     prop-types "^15.7.2"
 
-"@material-ui/styles@^5.0.0-alpha.15":
-  version "5.0.0-alpha.15"
-  resolved "https://registry.yarnpkg.com/@material-ui/styles/-/styles-5.0.0-alpha.15.tgz#fb0922ae4e931e5b3645d77a16f4c34f2c872649"
-  integrity sha512-jM9wS5SBSBlaw2oqPFdN8pCzpIajDEGZ+9bWE22yIn48t5BvcELjmXshlJe3yy21+8R+8pAISRx8VTig1ccTTw==
+"@material-ui/system@^4.9.14":
+  version "4.9.14"
+  resolved "https://registry.yarnpkg.com/@material-ui/system/-/system-4.9.14.tgz#4b00c48b569340cefb2036d0596b93ac6c587a5f"
+  integrity sha512-oQbaqfSnNlEkXEziDcJDDIy8pbvwUmZXWNqlmIwDqr/ZdCK8FuV3f4nxikUh7hvClKV2gnQ9djh5CZFTHkZj3w==
   dependencies:
     "@babel/runtime" "^7.4.4"
-    "@emotion/hash" "^0.8.0"
-    "@material-ui/types" "^5.1.0"
-    "@material-ui/utils" "^5.0.0-alpha.15"
-    clsx "^1.0.4"
-    csstype "^3.0.2"
-    hoist-non-react-statics "^3.3.2"
-    jss "^10.0.3"
-    jss-plugin-camel-case "^10.0.3"
-    jss-plugin-default-unit "^10.0.3"
-    jss-plugin-global "^10.0.3"
-    jss-plugin-nested "^10.0.3"
-    jss-plugin-props-sort "^10.0.3"
-    jss-plugin-rule-value-function "^10.0.3"
-    jss-plugin-vendor-prefixer "^10.0.3"
-    prop-types "^15.7.2"
-
-"@material-ui/system@^5.0.0-alpha.16":
-  version "5.0.0-alpha.16"
-  resolved "https://registry.yarnpkg.com/@material-ui/system/-/system-5.0.0-alpha.16.tgz#e86d4098807fdc5505b221f9af574805b76a7c3a"
-  integrity sha512-Ic9YbYw67eTfi1m5TnNA+HOL4ueDtv6w1qmDwG0+Uzdl4787G+N57XU7XMO7ns5c1t+xLrI+17MdmE4vGpzJrg==
-  dependencies:
-    "@babel/runtime" "^7.4.4"
-    "@material-ui/utils" "^5.0.0-alpha.15"
+    "@material-ui/utils" "^4.9.6"
+    csstype "^2.5.2"
     prop-types "^15.7.2"
 
 "@material-ui/types@^5.1.0":
@@ -504,7 +474,7 @@
   resolved "https://registry.yarnpkg.com/@material-ui/types/-/types-5.1.0.tgz#efa1c7a0b0eaa4c7c87ac0390445f0f88b0d88f2"
   integrity sha512-7cqRjrY50b8QzRSYyhSpx4WRw2YuO0KKIGQEVk5J8uoz2BanawykgZGoWEqKm7pVIbzFDN0SpPcVV4IhOFkl8A==
 
-"@material-ui/utils@^4.9.6":
+"@material-ui/utils@^4.10.2", "@material-ui/utils@^4.9.6":
   version "4.10.2"
   resolved "https://registry.yarnpkg.com/@material-ui/utils/-/utils-4.10.2.tgz#3fd5470ca61b7341f1e0468ac8f29a70bf6df321"
   integrity sha512-eg29v74P7W5r6a4tWWDAAfZldXIzfyO1am2fIsC39hdUUHm/33k6pGOKPbgDjg/U/4ifmgAePy/1OjkKN6rFRw==
@@ -512,17 +482,6 @@
     "@babel/runtime" "^7.4.4"
     prop-types "^15.7.2"
     react-is "^16.8.0"
-
-"@material-ui/utils@^5.0.0-alpha.15":
-  version "5.0.0-alpha.15"
-  resolved "https://registry.yarnpkg.com/@material-ui/utils/-/utils-5.0.0-alpha.15.tgz#b3ff9ae27f0b1ba60fe85ed318c49e4796d7eece"
-  integrity sha512-hxzqf4W7FVnVWB0x/+FKUwdcR3YUyoe7SeDBdsqPTkcUstU7RvrJztCAhybmeT3nTRQBd28HKGguM6oSCbboUw==
-  dependencies:
-    "@babel/runtime" "^7.4.4"
-    "@types/prop-types" "^15.7.3"
-    "@types/react-is" "^16.7.1 || ^17.0.0"
-    prop-types "^15.7.2"
-    react-is "^16.8.0 || ^17.0.0"
 
 "@next/env@10.0.2":
   version "10.0.2"
@@ -576,11 +535,6 @@
     "@nodelib/fs.scandir" "2.1.3"
     fastq "^1.6.0"
 
-"@popperjs/core@^2.4.4":
-  version "2.5.4"
-  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.5.4.tgz#de25b5da9f727985a3757fd59b5d028aba75841a"
-  integrity sha512-ZpKr+WTb8zsajqgDkvCEWgp6d5eJT6Q63Ng2neTbzBO76Lbe91vX/iVIW9dikq+Fs3yEo+ls4cxeXABD2LtcbQ==
-
 "@types/json-schema@^7.0.3", "@types/json-schema@^7.0.5", "@types/json-schema@^7.0.6":
   version "7.0.6"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.6.tgz#f4c7ec43e81b319a9815115031709f26987891f0"
@@ -604,7 +558,7 @@
   resolved "https://registry.yarnpkg.com/@types/parse-json/-/parse-json-4.0.0.tgz#2f8bb441434d163b35fb8ffdccd7138927ffb8c0"
   integrity sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==
 
-"@types/prop-types@*", "@types/prop-types@^15.7.3":
+"@types/prop-types@*":
   version "15.7.3"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.3.tgz#2ab0d5da2e5815f94b0b9d4b95d1e5f243ab2ca7"
   integrity sha512-KfRL3PuHmqQLOG+2tGpRO26Ctg+Cq1E01D2DMriKEATHgWLfeNDmq9e29Q9WIky0dQ3NPkd1mzYH8Lm936Z9qw==
@@ -613,13 +567,6 @@
   version "0.14.21"
   resolved "https://registry.yarnpkg.com/@types/react-addons-linked-state-mixin/-/react-addons-linked-state-mixin-0.14.21.tgz#3abf296fe09d036c233ebe55f4562f3e6233af49"
   integrity sha512-3UF7Szd3JyuU+z90kqu8L4VdDWp7SUC0eRjV2QmMEliaHODGLi5XyO5ctS50K/lG6fjC0dSAPVbvnqv0nPoGMQ==
-  dependencies:
-    "@types/react" "*"
-
-"@types/react-is@^16.7.1 || ^17.0.0":
-  version "17.0.0"
-  resolved "https://registry.yarnpkg.com/@types/react-is/-/react-is-17.0.0.tgz#6b60190ae60591ae0c83d6f3854e61e08f5a7976"
-  integrity sha512-A0DQ1YWZ0RG2+PV7neAotNCIh8gZ3z7tQnDJyS2xRPDNtAtSPcJ9YyfMP8be36Ha0kQRzbZCrrTMznA4blqO5g==
   dependencies:
     "@types/react" "*"
 
@@ -4169,6 +4116,11 @@ pnp-webpack-plugin@1.6.4:
   dependencies:
     ts-pnp "^1.1.6"
 
+popper.js@1.16.1-lts:
+  version "1.16.1-lts"
+  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.16.1-lts.tgz#cf6847b807da3799d80ee3d6d2f90df8a3f50b05"
+  integrity sha512-Kjw8nKRl1m+VrSFCoVGPph93W/qrSO7ZkqPpTf7F4bk/sqcfWK019dWBUpE/fBOsOQY1dks/Bmcbfn1heM/IsA==
+
 posix-character-classes@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/posix-character-classes/-/posix-character-classes-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"
@@ -4449,7 +4401,7 @@ react-is@16.13.1, react-is@^16.7.0, react-is@^16.8.0, react-is@^16.8.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-"react-is@^16.8.0 || ^17.0.0", react-is@^17.0.0:
+react-is@^17.0.0:
   version "17.0.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.1.tgz#5b3531bd76a645a4c9fb6e693ed36419e3301339"
   integrity sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
