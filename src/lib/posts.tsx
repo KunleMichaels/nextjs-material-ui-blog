@@ -40,6 +40,6 @@ const getPostFromFile = (fullPath: string, id: string, includeContent = false): 
   return {
     id,
     ...matterResult.data,
-    content: includeContent ? matterResult.content : undefined,
+    content: includeContent ? matterResult.content : null,
   } as PostData
 }

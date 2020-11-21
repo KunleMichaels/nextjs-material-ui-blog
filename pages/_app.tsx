@@ -1,4 +1,3 @@
-import '../styles/globals.css'
 import { ThemeProvider } from '../src/theme'
 import React, { useEffect } from 'react'
 import { AppProps } from 'next/app'
