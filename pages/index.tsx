@@ -1,5 +1,8 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+import { getSortedPostsData } from '../src/lib/posts'
+import { GetStaticPropsResult } from 'next'
+import { PostData } from '../src/types/posts'
 
 export default function Home() {
   return (
@@ -55,4 +58,17 @@ export default function Home() {
       </footer>
     </div>
   )
+}
+
+export const getStaticProps = async (): Promise<
+  GetStaticPropsResult<{
+    allPostsData: PostData[]
+  }>
+> => {
+  const allPostsData = getSortedPostsData()
+  return {
+    props: {
+      allPostsData,
+    },
+  }
 }

@@ -1,8 +1,8 @@
 ---
 title: FAQ
 description: "Frequently Asked Questions"
-date: '2020-06-30'
-featured: false
+date: '2020-06-02'
+featured: true
 ---
 
 ## What keyboard do you use?
