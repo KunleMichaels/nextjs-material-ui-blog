@@ -10,6 +10,7 @@ import useScrollTrigger from '@material-ui/core/useScrollTrigger'
 import { makeStyles } from '@material-ui/core/styles'
 import { ToggleThemeContext } from '../theme'
 import Link from 'next/link'
+import { Tooltip } from '@material-ui/core'
 
 const useStyles = makeStyles({
   show: {
@@ -55,9 +56,11 @@ export const TopBar = (): ReactElement => {
           </Link>
         </div>
         <div className={classes.toolbarRight}>
-          <Button variant="text" color="inherit" onClick={toggleTheme}>
-            {isDark ? <SunIcon /> : <MoonIcon />}
-          </Button>
+          <Tooltip title="Toggle Theme">
+            <Button variant="text" color="inherit" onClick={toggleTheme}>
+              {isDark ? <SunIcon /> : <MoonIcon />}
+            </Button>
+          </Tooltip>
         </div>
       </Toolbar>
     </AppBar>

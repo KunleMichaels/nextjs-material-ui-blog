@@ -25,7 +25,7 @@ const TopicsDisplay = ({ topics, n, noMargin = undefined }: TopicsDisplayProps):
   return (
     <div style={noMargin ? {} : { width: '90%', margin: 'auto', textAlign: 'center', display: 'absolute' }}>
       {topics.slice(0, n ?? 1000).map((t) => (
-        <Link key={t} href={`/topics/${t}`}>
+        <Link key={t} href={`/topics/${t.replace(' ', '-')}`}>
           <Chip className={noMargin ? classes.buttonPaddingNoMargin : classes.buttonPadding} label={t} />
         </Link>
       ))}

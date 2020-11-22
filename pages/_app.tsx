@@ -2,6 +2,8 @@ import { ThemeProvider } from '../src/theme'
 import React, { useEffect } from 'react'
 import { AppProps } from 'next/app'
 import TopBar from '../src/components/TopBar'
+import { Footer } from '../src/components/Footer'
+import styles from '../styles/App.module.css'
 
 const MyApp = ({ Component, pageProps }: AppProps): React.ReactNode => {
   useEffect(() => {
@@ -13,12 +15,15 @@ const MyApp = ({ Component, pageProps }: AppProps): React.ReactNode => {
 
   return (
     <>
-      <ThemeProvider>
-        <div style={{ paddingBottom: 20 }}>
-          <TopBar />
-          <Component {...pageProps} />
-        </div>
-      </ThemeProvider>
+      <div className={styles['app-container']}>
+        <ThemeProvider>
+          <div className={styles['content-container']}>
+            <TopBar />
+            <Component {...pageProps} />
+          </div>
+          <Footer />
+        </ThemeProvider>
+      </div>
     </>
   )
 }
