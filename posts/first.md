@@ -3,7 +3,7 @@ title: FAQ
 description: "Frequently Asked Questions Frequently Frequently Asked Questions Frequently Frequently Asked Questions Frequently Questions Asked Questions Frequently Asked Questions Asked Questions Frequently Asked Questions"
 date: '2020-06-30'
 featured: false
-topics: Golang,React,GraphQL
+topics: Golang,React,GraphQL,Next JS
 ---
 
 ## What keyboard do you use?

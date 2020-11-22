@@ -14,12 +14,10 @@ const Topics = ({ topics, postsData }: { topics: string[]; postsData: PostData[]
     <>
       <PageHeading title="The most popular tech topics" />
       <TopicsDisplay topics={topics} n={1000} />
-      <Box pt={12}>
-        <Box pt={4} pb={4}>
-          <Grid item xs={12}>
-            <Preview posts={postsData} />
-          </Grid>
-        </Box>
+      <Box pt={12} pb={4}>
+        <Grid item xs={12}>
+          <Preview posts={postsData} />
+        </Grid>
       </Box>
     </>
   )
