@@ -10,22 +10,27 @@ import Typography from '@material-ui/core/Typography'
 import { PostData } from '../types/posts'
 import { Box } from '@material-ui/core'
 import Link from 'next/link'
-import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined'
+import ChevronRight from '@material-ui/icons/ChevronRight'
 
 type PreviewCardProps = {
   post: PostData
 }
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    width: 400,
+  card: {
+    width: 370,
     [theme.breakpoints.down('md')]: {
       width: 300,
+    },
+    [theme.breakpoints.up('xl')]: {
+      width: 440,
     },
     height: 350,
     margin: 'auto',
     position: 'relative',
     cursor: 'pointer',
+    backgroundColor: theme.palette.primary.light,
+    color: theme.palette.text.secondary,
   },
   media: {
     height: 160,
@@ -33,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   actions: {
     right: 20,
     bottom: 10,
-    padding: 5,
+    padding: 10,
     position: 'absolute',
   },
 }))
@@ -42,7 +47,7 @@ export const PreviewCard: FC<PreviewCardProps> = ({ post }): ReactElement => {
 
   return (
     <Link href={`/blog/${post.id}`}>
-      <Card className={classes.root}>
+      <Card className={classes.card} elevation={3}>
         <CardActionArea>
           <CardMedia className={classes.media} image={`/small/${post.id}.png`} title={post.title} />
         </CardActionArea>
@@ -50,14 +55,14 @@ export const PreviewCard: FC<PreviewCardProps> = ({ post }): ReactElement => {
           <Typography gutterBottom variant="h5" component="h2">
             {post.title}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="body2" color="textPrimary" component="p">
             {post.description}
           </Typography>
         </CardContent>
         <CardActions>
           <Box pt={3}>
             <Button size="small" variant="text" className={classes.actions}>
-              <VisibilityOutlinedIcon style={{ marginRight: 20 }} /> Learn More…
+              Learn More <ChevronRight style={{ marginLeft: 20 }} />
             </Button>
           </Box>
         </CardActions>

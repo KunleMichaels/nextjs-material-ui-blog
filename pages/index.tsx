@@ -3,11 +3,11 @@ import { GetStaticPropsResult } from 'next'
 import { PostData } from '../src/types/posts'
 import React, { ReactElement } from 'react'
 import { Grid, Typography } from '@material-ui/core'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Shared.module.css'
 import Box from '@material-ui/core/Box'
 import TopicsDisplay from '../src/components/TopicsDisplay'
-import PreviewCard from '../src/components/PreviewCard'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { Preview } from '../src/components/Preview'
 
 const Home = ({ postsData, sortedTopics }: { postsData: PostData[]; sortedTopics: string[] }): ReactElement => {
   const large = useMediaQuery('(min-width:700px)')
@@ -27,13 +27,7 @@ const Home = ({ postsData, sortedTopics }: { postsData: PostData[]; sortedTopics
       </Grid>
       <Grid item xs={12}>
         <Box pt={3}>
-          <Grid container spacing={3} justify="flex-start" style={{ width: '95%', margin: 'auto' }}>
-            {postsData.map((pd) => (
-              <Grid key={pd.id} item xs={12} md={6} lg={4}>
-                <PreviewCard post={pd} />
-              </Grid>
-            ))}
-          </Grid>
+          <Preview posts={postsData} />
         </Box>
       </Grid>
     </Grid>
@@ -50,7 +44,7 @@ export const getStaticProps = async (): Promise<
   const postsData = getSortedPostsData()
   return {
     props: {
-      postsData: postsData.filter((pd) => pd.featured),
+      postsData: postsData,
       sortedTopics,
     },
   }
