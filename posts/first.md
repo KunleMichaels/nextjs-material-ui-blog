@@ -5,6 +5,7 @@ on the technologies mentioned in the title. This article will be all about getti
 date: '2020-11-22'
 featured: true
 topics: Next.js,React,Material-UI,Typescript
+recommended: second
 ---
 
 ## My own Next.js blog – how it all started 
@@ -38,96 +39,142 @@ To integrate Typescript into your project, just create an empty _tsconfig.json_ 
 this file and initialize it. 
 
 Now, add _@types/node_ and _@types/react_ and of course _typescript_ to your dev-dependencies. The reason for the node types is 
-that we are going to write server-side code for rendering, and there we will need modules such as ``fs`` and ``path``. 
+that we are going to write server-side code for rendering, and there we will need modules such as ``fs`` and ``path``.
+
+You can change the file extension of all Javascript files in your project to _.ts_ or _.tsx_ now and immediately start
+working with Typescript, no further steps are necessary here. 
 
 ### Integrating Material-UI with Next.js
 
 It's a bit more involved to make Next.js integrate with Material-UI. 
 
+First, install all of the necessary dependencies and one dev-dependency:
+```json
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/styles": "^4.10.0",
+...
+    "@types/material-ui": "^0.21.8",
+```
+
 The reason for this is that Material-UI makes heavy use of styled components. Styled components can be applied in [server-side rendering](https://styled-components.com/docs/advanced#server-side-rendering),
-but this makes it necessary for the developer to perform some additional steps. Luckily, there exists a [babel plugin](https://styled-components.com/docs/tooling#babel-plugin) that does
-most of the heavy lifting for us. And luckily, the Material-UI prepared a starter project that demonstrates 
+but this makes it necessary for the developer to perform some additional steps. Luckily, the Material-UI team prepared a [starter project](https://github.com/mui-org/material-ui/blob/master/examples/nextjs) that demonstrates 
+well what has to be done. Basically, you need to follow these steps:
 
-## How do you get autocompletion in your terminal?
-
-[Fish shell](https://fishshell.com/)
-
-## What theme do you use?
-
-- VSCode: default dark theme with [bracket-pair-colorizer-2](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2)
-
-- iTerm2: [gruvbox](https://github.com/morhetz/gruvbox-contrib)
-
-If you want to see all my VSCode settings/extensions: https://gist.github.com/benawad/1e9dd01994f78489306fbfd6f7b01cd3
+1. create a custom file _/pages/\_document.tsx_ and add fill it as follows:
 
 ```typescript
-export const getStaticProps = async ({
-  params: { slug },
-}: GetStaticPropsContext<{ slug: string }>): Promise<
-  GetStaticPropsResult<{
-    postData: PostData
-    nextPath: NextPostInfo
-  }>
-> => {
-  const postData = getPost(slug, true)
+import React from 'react';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
+import { ServerStyleSheets } from '@material-ui/core/styles';
+import theme from '../src/theme';
 
-  const paths = getSortedPostsData().map(({ id, title }) => {
-    return { path: id, title }
-  })
-
-  const nextPath = paths.reduce(
-    (prev, curr, i) => (curr.path === slug && i >= 1 ? paths[i - 1] : curr),
-    paths[paths.length - 1],
-  )
-
-  return {
-    props: {
-      postData,
-      nextPath,
-    },
+export default class MyDocument extends Document {
+  render() {
+    return (
+      <Html lang="en">
+        <Head>
+          <meta name="theme-color" content={theme.palette.primary.main} />
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,500,700&display=swap" />
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,500,700&display=swap"
+          />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
   }
 }
+
+MyDocument.getInitialProps = async (ctx) => {
+  const sheets = new ServerStyleSheets();
+  const originalRenderPage = ctx.renderPage;
+
+  ctx.renderPage = () =>
+    originalRenderPage({
+      enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
+    });
+
+  const initialProps = await Document.getInitialProps(ctx);
+
+  return {
+    ...initialProps,
+    styles: [...React.Children.toArray(initialProps.styles), sheets.getStyleElement()],
+  };
+};
 ```
-- Vim: https://www.youtube.com/watch?v=IiwGbcd8S7I
-- VSCode shortcuts: https://www.youtube.com/watch?v=t9kSTiqhUfg
+Feel free to add types to this document – I keep it as it is in the original repository, as we'll not have to further adapt it.
 
-## How do you get autocompletion in your terminal?
-
-[Fish shell](https://fishshell.com/)
-
-## What theme do you use?
-
-- VSCode: default dark theme with [bracket-pair-colorizer-2](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2)
-
-- iTerm2: [gruvbox](https://github.com/morhetz/gruvbox-contrib)
-
-If you want to see all my VSCode settings/extensions: https://gist.github.com/benawad/1e9dd01994f78489306fbfd6f7b01cd3
+2. In your _\_app.tsx_, apply a ``useEffect`` hook to remove the CSS that will be injected on server-side from the client-side app:
 
 ```typescript
-export const getStaticProps = async ({
-  params: { slug },
-}: GetStaticPropsContext<{ slug: string }>): Promise<
-  GetStaticPropsResult<{
-    postData: PostData
-    nextPath: NextPostInfo
-  }>
-> => {
-  const postData = getPost(slug, true)
+  useEffect(() => {
+    const jssStyles = document.querySelector('#jss-server-side')
+    if (jssStyles) {
+      jssStyles.parentElement.removeChild(jssStyles)
+    }
+  }, [])
+``` 
 
-  const paths = getSortedPostsData().map(({ id, title }) => {
-    return { path: id, title }
-  })
+In general, if you have some setup code in your components that you only want to execute on the client, this can be achieved with
+the _useEffect_ hook and and an empty dependency array. However, this should be done as sparingly as possible, as otherwise we
+lose the benefits of having a prerendered page with a minimum amount of Javascript code having to be executed by the clients.
 
-  const nextPath = paths.reduce(
-    (prev, curr, i) => (curr.path === slug && i >= 1 ? paths[i - 1] : curr),
-    paths[paths.length - 1],
-  )
+## Adding themes to the blog with Material-UI themes
 
+As far as the basic project setup goes, we are all done now, and can start to theme our Next.js app with [Material-UI themes](https://material-ui.com/customization/theming/). You may have noticed that our _\_document.tsx_ already makes use of the selected theme:
+```typescript
+<meta name="theme-color" content={theme.palette.primary.main} />
+```
+In the further posts of this article series, I'm going to talk about some additional ``meta`` tags that can be added dynamically
+using Next.js. The [``theme-color``](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name/theme-color) value tells 
+user agents how to style the UI surrounding the displayed page and this way enhances the user experience.
+
+![Theme Color](/images/theme-color.png)
+_Image credit: from [Icons & Browser Colors](https://developers.google.com/web/fundamentals/design-and-ux/browser-customization), created and shared by Google and used according to terms described in the Creative Commons 4.0 Attribution License._
+
+I wanted to make it possible in my blog for the user to chose between a dark and a light mode. We'll see in the next post how toggling the 
+theme can be implemented. Therefore, I wrote both a dark and a light theme in _src/theme/theme.ts_:
+
+```typescript
+import { createMuiTheme, ThemeOptions } from '@material-ui/core'
+
+export const paletteColorsDark = {
+  primary: '#0f4c75',
+  secondary: '#3282b8',
+  error: '#E44C65',
+  background: '#1b262c',
+  text: '#bbe1fa',
+}
+
+export const paletteColorsLight = {
+  primary: '#6886c5',
+  secondary: '#ffe0ac',
+  error: '#E44C65',
+  background: '#f9f9f9',
+  text: '#050505',
+}
+
+const options = (dark: boolean): ThemeOptions => {
+  const paletteColors = dark ? paletteColorsDark : paletteColorsLight
   return {
-    props: {
-      postData,
-      nextPath,
-    },
+    palette: {
+      type: dark ? 'dark' : 'light',
+      primary: {
+        main: paletteColors.primary,
+      },
+    // ...
+    }
   }
 }
+export const darkTheme = createMuiTheme(options(true))
+export const lightTheme = createMuiTheme(options(false))
 ```
+
+And that's it for the basic setup! If you would like to see some of the actual implementation details
+of my blog – e.g., how the articles are saved in Markdown files and transformed into website content 
+with syntax highlighting on the server side by Next.js, stay tuned for the next articles in this series. 

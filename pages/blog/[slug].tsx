@@ -92,10 +92,9 @@ export const getStaticProps = async ({
 
   const paths = getSortedPostsData()
 
-  const nextPath = paths.reduce(
-    (prev, curr, i) => (curr.id === slug && i >= 1 ? paths[i - 1] : curr),
-    paths[paths.length - 1],
-  )
+  const nextPath = !postData.recommended
+    ? paths.reduce((prev, curr, i) => (curr.id === slug && i >= 1 ? paths[i - 1] : curr), paths[paths.length - 1])
+    : paths.filter((p) => p.id === postData.recommended).pop()
 
   return {
     props: {
