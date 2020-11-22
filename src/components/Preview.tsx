@@ -10,12 +10,14 @@ type PreviewProps = {
 
 export const Preview: FC<PreviewProps> = ({ posts }): ReactElement => {
   return (
-    <Grid container spacing={3} justify="flex-start" style={paddedItem}>
-      {posts.map((pd) => (
-        <Grid key={pd.id} item xs={12} md={6} lg={4} xl={3}>
-          <PreviewCard post={pd} />
-        </Grid>
-      ))}
-    </Grid>
+    <div style={paddedItem}>
+      <Grid container spacing={3} justify="flex-start">
+        {posts.map((pd) => (
+          <Grid key={pd.id} item xs={12} md={6} lg={4} xl={3}>
+            <PreviewCard post={pd} />
+          </Grid>
+        ))}
+      </Grid>
+    </div>
   )
 }

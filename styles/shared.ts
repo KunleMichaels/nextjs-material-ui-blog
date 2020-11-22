@@ -3,4 +3,4 @@ export const headingContainer = {
   paddingTop: 30,
 }
 
-export const paddedItem = { width: '95%', margin: 'auto' }
+export const paddedItem = { width: 1950, maxWidth: '95%', margin: 'auto' }

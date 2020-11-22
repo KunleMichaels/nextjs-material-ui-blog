@@ -14,16 +14,20 @@ import ChevronRight from '@material-ui/icons/ChevronRight'
 
 type PreviewCardProps = {
   post: PostData
+  noMargin?: boolean
 }
 
 const useStyles = makeStyles((theme) => ({
   card: {
-    width: 370,
+    width: 400,
     [theme.breakpoints.down('md')]: {
+      width: 380,
+    },
+    [theme.breakpoints.down('xs')]: {
       width: 300,
     },
     [theme.breakpoints.up('xl')]: {
-      width: 440,
+      width: 450,
     },
     height: 350,
     margin: 'auto',
@@ -42,12 +46,12 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
   },
 }))
-export const PreviewCard: FC<PreviewCardProps> = ({ post }): ReactElement => {
+export const PreviewCard: FC<PreviewCardProps> = ({ post, noMargin }): ReactElement => {
   const classes = useStyles()
 
   return (
     <Link href={`/blog/${post.id}`}>
-      <Card className={classes.card} elevation={3}>
+      <Card className={classes.card} elevation={3} style={noMargin ? { margin: 0 } : {}}>
         <CardActionArea>
           <CardMedia className={classes.media} image={`/small/${post.id}.png`} title={post.title} />
         </CardActionArea>

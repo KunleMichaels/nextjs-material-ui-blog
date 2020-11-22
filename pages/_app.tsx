@@ -14,8 +14,10 @@ const MyApp = ({ Component, pageProps }: AppProps): React.ReactNode => {
   return (
     <>
       <ThemeProvider>
-        <TopBar />
-        <Component {...pageProps} />
+        <div style={{ paddingBottom: 20 }}>
+          <TopBar />
+          <Component {...pageProps} />
+        </div>
       </ThemeProvider>
     </>
   )
