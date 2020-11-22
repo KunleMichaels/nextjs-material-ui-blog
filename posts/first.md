@@ -26,3 +26,32 @@ topics: Golang,React,GraphQL,Next JS
 - iTerm2: [gruvbox](https://github.com/morhetz/gruvbox-contrib)
 
 If you want to see all my VSCode settings/extensions: https://gist.github.com/benawad/1e9dd01994f78489306fbfd6f7b01cd3
+
+```typescript
+export const getStaticProps = async ({
+  params: { slug },
+}: GetStaticPropsContext<{ slug: string }>): Promise<
+  GetStaticPropsResult<{
+    postData: PostData
+    nextPath: NextPostInfo
+  }>
+> => {
+  const postData = getPost(slug, true)
+
+  const paths = getSortedPostsData().map(({ id, title }) => {
+    return { path: id, title }
+  })
+
+  const nextPath = paths.reduce(
+    (prev, curr, i) => (curr.path === slug && i >= 1 ? paths[i - 1] : curr),
+    paths[paths.length - 1],
+  )
+
+  return {
+    props: {
+      postData,
+      nextPath,
+    },
+  }
+}
+```

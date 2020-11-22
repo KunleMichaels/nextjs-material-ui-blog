@@ -1,14 +1,29 @@
-import React, { FC, ReactElement } from 'react'
+import React, { FC, ReactElement, useEffect } from 'react'
 import { getPost, getSortedPostsData } from '../../src/lib/posts'
 import { PostData } from '../../src/types/posts'
 import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import marked from 'marked'
 import Head from 'next/head'
 import Link from 'next/link'
+import hljs from 'highlight.js'
+import '../../node_modules/highlight.js/styles/monokai.css'
+import '../../node_modules/highlight.js/lib/highlight'
 
 type Props = { postData: PostData; nextPath: NextPostInfo }
 
 const Slug: FC<Props> = ({ postData, nextPath }): ReactElement => {
+  marked.setOptions({
+    highlight: function (code) {
+      return hljs.highlightAuto(code).value
+    },
+  })
+
+  useEffect(() => {
+    document.querySelectorAll('pre code').forEach((block: HTMLElement) => {
+      hljs.highlightBlock(block)
+    })
+  }, [])
+
   return (
     <>
       <Head>
