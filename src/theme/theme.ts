@@ -83,7 +83,7 @@ const options = (dark: boolean): ThemeOptions => {
           },
           a: {
             textDecoration: 'none',
-            fontWeight: 'bold',
+            fontWeight: 900,
             color: paletteColors.text,
           },
         },

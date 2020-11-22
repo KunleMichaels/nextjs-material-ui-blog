@@ -35,7 +35,7 @@ const Topic: FC<Props> = ({ postsData, topic, topics }): ReactElement => {
         />
       </Head>
       <PageHeading title={realTopicName} />
-      <TopicsDisplay topics={topics.filter((t) => t !== realTopicName)} n={5} />
+      <TopicsDisplay topics={topics.filter((t) => adaptTopicName(t) !== realTopicName)} n={5} />
       <Box pt={4} pb={4}>
         <Grid item xs={12}>
           <Preview posts={postsData} />
@@ -59,7 +59,7 @@ export const getStaticProps = async ({
 
   return {
     props: {
-      postsData: postsData.filter((pd) => pd.topics.includes(adaptTopicName(topic))),
+      postsData: postsData.filter((pd) => pd.topics.map((t) => adaptTopicName(t)).includes(adaptTopicName(topic))),
       topic: topic,
       topics,
     },
