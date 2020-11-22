@@ -7,6 +7,7 @@ import Box from '@material-ui/core/Box'
 import { Grid } from '@material-ui/core'
 import { Preview } from '../../src/components/Preview'
 import TopicsDisplay from '../../src/components/TopicsDisplay'
+import Head from 'next/head'
 
 type Props = { postsData: PostData[]; topic: string; topics: string[] }
 
@@ -18,6 +19,21 @@ const Topic: FC<Props> = ({ postsData, topic, topics }): ReactElement => {
   const realTopicName = adaptTopicName(topic)
   return (
     <>
+      <Head>
+        <title>{realTopicName}</title>
+        <meta
+          name="description"
+          content={
+            'Learn about ' +
+            realTopicName +
+            ' by reading the most recent blog posts about ' +
+            realTopicName +
+            ' and more topics like ' +
+            topics.join(', ') +
+            '.'
+          }
+        />
+      </Head>
       <PageHeading title={realTopicName} />
       <TopicsDisplay topics={topics.filter((t) => t !== realTopicName)} n={5} />
       <Box pt={4} pb={4}>

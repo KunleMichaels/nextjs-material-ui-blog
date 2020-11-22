@@ -8,29 +8,40 @@ import Box from '@material-ui/core/Box'
 import TopicsDisplay from '../src/components/TopicsDisplay'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { Preview } from '../src/components/Preview'
+import Head from 'next/head'
 
 const Home = ({ postsData, sortedTopics }: { postsData: PostData[]; sortedTopics: string[] }): ReactElement => {
   const large = useMediaQuery('(min-width:700px)')
 
   return (
-    <Grid container>
-      <Grid item xs={12} className={styles.headings}>
-        <Box p={5}>
-          <Typography variant={large ? 'h1' : 'h4'}>DevFullStack</Typography>
-          <Typography className={styles.secondHeading} variant={large ? 'h3' : 'h6'}>
-            A tech blog.
-          </Typography>
-        </Box>
+    <>
+      <Head>
+        <title>DevFullStack: Full Stack Web Development - a tech blog.</title>
+        <meta
+          name="description"
+          content="DevFullStack is a blog on various topics in full stack development
+        with a focus on current technologies like React, NextJS and Go programming."
+        />
+      </Head>
+      <Grid container>
+        <Grid item xs={12} className={styles.headings}>
+          <Box p={5}>
+            <Typography variant={large ? 'h1' : 'h4'}>DevFullStack</Typography>
+            <Typography className={styles.secondHeading} variant={large ? 'h3' : 'h6'}>
+              A tech blog.
+            </Typography>
+          </Box>
+        </Grid>
+        <Grid item xs={12}>
+          <TopicsDisplay topics={sortedTopics} n={5} />
+        </Grid>
+        <Grid item xs={12}>
+          <Box pt={3}>
+            <Preview posts={postsData} />
+          </Box>
+        </Grid>
       </Grid>
-      <Grid item xs={12}>
-        <TopicsDisplay topics={sortedTopics} n={5} />
-      </Grid>
-      <Grid item xs={12}>
-        <Box pt={3}>
-          <Preview posts={postsData} />
-        </Box>
-      </Grid>
-    </Grid>
+    </>
   )
 }
 

@@ -35,7 +35,7 @@ const Slug: FC<Props> = ({ postData, nextPath }): ReactElement => {
     <>
       <Head>
         <title>{postData.title}</title>
-        <meta title="description" content={postData.description} />
+        <meta name="description" content={postData.description} />
       </Head>
       <div className={styles['text-content']}>
         <PageHeading title={postData.title} />
