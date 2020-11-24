@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('xs')]: {
       width: 300,
+      height: 500,
     },
     [theme.breakpoints.up('lg')]: {
       width: 410,
@@ -72,7 +73,7 @@ export const PreviewCard: FC<PreviewCardProps> = ({ post, noMargin }): ReactElem
         <CardActions>
           <Box pt={3}>
             <Button size="small" variant="text" className={classes.actions}>
-              Learn More <ChevronRight style={{ marginLeft: 20 }} />
+              Read More <ChevronRight style={{ marginLeft: 20 }} />
             </Button>
           </Box>
         </CardActions>
