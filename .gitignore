@@ -35,4 +35,5 @@ yarn-error.log*
 
 #misc
 .idea
+
 public/sitemap.xml
