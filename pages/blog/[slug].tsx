@@ -4,7 +4,6 @@ import { PostData } from '../../src/types/posts'
 import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import marked from 'marked'
 import Head from 'next/head'
-import Link from 'next/link'
 import hljs from 'highlight.js'
 import '../../node_modules/highlight.js/styles/monokai.css'
 import '../../node_modules/highlight.js/lib/highlight'
@@ -14,7 +13,7 @@ import { Card, CardMedia, Typography } from '@material-ui/core'
 import GitHubIcon from '@material-ui/icons/GitHub'
 import TopicsDisplay from '../../src/components/TopicsDisplay'
 import PreviewCard from '../../src/components/PreviewCard'
-import { Preview } from '../../src/components/Preview'
+import { BASE_URL, NAME } from '../../src/types/constants'
 
 type Props = { postData: PostData; nextPath: PostData }
 
@@ -29,13 +28,25 @@ const Slug: FC<Props> = ({ postData, nextPath }): ReactElement => {
     document.querySelectorAll('pre code').forEach((block: HTMLElement) => {
       hljs.highlightBlock(block)
     })
-  }, [])
+  }, [postData])
 
   return (
     <>
       <Head>
         <title>{postData.title}</title>
         <meta name="description" content={postData.description} />
+        <meta property="article:published_time" content={`${postData.date}T10:00:00Z`} />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:description" content={postData.description} />
+        <meta name="twitter:title" content={postData.title} />
+        <meta name="twitter:image" content={`${BASE_URL}/large/${postData.id}.png`} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={postData.title} />
+        <meta property="og:description" content={postData.description} />
+        <meta property="og:url" content={`${BASE_URL}/blog/${postData.id}`} />
+        <meta property="og:site_name" content={NAME} />
+        <meta property="og:image" content={`${BASE_URL}/large/${postData.id}.png`} />
+        <meta property="og:image:secure_url" content={`${BASE_URL}/large/${postData.id}.png`} />
       </Head>
       <div className={styles['text-content']}>
         <PageHeading title={postData.title} />

@@ -11,6 +11,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import { ToggleThemeContext } from '../theme'
 import Link from 'next/link'
 import { Tooltip } from '@material-ui/core'
+import { NAME_AND_DOMAIN } from '../types/constants'
 
 const useStyles = makeStyles({
   show: {
@@ -44,7 +45,7 @@ export const TopBar = (): ReactElement => {
       <Toolbar className={classes.toolbar}>
         <Link href="/">
           <a>
-            <Typography variant="h6">DevFullStack</Typography>
+            <Typography variant="h6">{NAME_AND_DOMAIN}</Typography>
           </a>
         </Link>
         <div className={classes.toolbarContent}>

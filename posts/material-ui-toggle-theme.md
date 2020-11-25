@@ -1,5 +1,5 @@
 ---
-title: 'Material UI and Next.js – How to Toggle the Selected Theme'
+title: 'Material UI and Next.js – How to Toggle the Selected Theme with React Context'
 date: '2020-11-24'
 description: 'Material-UI comes with great support for applying a theme to all components of your app. However, if you want to allow your users to toggle between different modes, like dark and light mode, there is no built-in solution for this use case. In this post, we are going to see how this feature can be easily implemented with React context.'
 featured: true
@@ -9,6 +9,8 @@ recommended: blog-with-next-js-react-material-ui-and-typescript
 
 This is the second post in the series about how this blog functions, and it is an example of a use case for when to apply 
  React context and how this can be achieved. 
+ 
+> *You can find the complete code shown in this post at https://github.com/FelixMohr/nextjs-material-ui-blog*
  
 Material-UI comes with great support for applying a theme to all components of your app. However, if you want to allow your 
 users to toggle between different modes, like dark and light mode, there is no built-in solution for this use case. 
@@ -115,11 +117,14 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }: ThemeP
 ``` 
 We firstly create the context ``ToggleThemeContext``. This context gets a function that will be used to toggle between dark
 and light mode and initially has an "empty" implementation. The actual implementation is specified in the ``ThemeContext.Provider`` definition.
-In the provider, we ``useState`` to keep track of the selected theme. Also, the name of this theme gets saved in localStorage.
-This makes sure that whenever the user visits the blog, the correct theme gets applied directly by our ``useEffect``. 
 
+In the provider, we ``useState`` to keep track of the selected theme. Also, the name of this theme gets saved in _localStorage_.
+This makes sure that whenever the user visits the blog, the correct theme gets applied directly by our ``useEffect``, where the value
+written to _localStorage_ is evaluated. 
 
-This approach works nicely and we can use another React hook – ``useContext`` – in _src/components/TopBar.tsx_ to toggle the selected theme:
+As the provider wraps the whole blog, we could make it possible in every component to both toggle and access the current theme.
+We can use another React hook – ``useContext`` – in _src/components/TopBar.tsx_ to toggle the selected theme and to show either
+the sun or the moon icon on the toggle button, depending on the currently selected theme:
 ```typescript
 export const TopBar = (): ReactElement => {
   const trigger = useScrollTrigger()
@@ -139,9 +144,10 @@ export const TopBar = (): ReactElement => {
 }
 ```
 
+## Theming an app with Next.js
 There is just one caveat left that we have to deal with: As the blog is a Next.js application, the page contents get prerendered
 on the server. The server, however, has no way of knowing what theme the user has selected. Also note that ``localStorage`` is only
-used dynamically in the code above, to avoid the server from trying to execute this code (which would not make any sense).
+used on client-side in the code above, to avoid the server from trying to execute this code (which would not make any sense).
 
 If we kept our app as it is, the standard theme would be the dark theme, and clients would receive prerendered content themed 
 this way, even if they prefer the light mode. This would cause the client-side Javascript code to override the server styles
@@ -179,6 +185,21 @@ const MyApp = ({ Component, pageProps }: AppProps): React.ReactNode => {
 Initially, the content of our page receives the ``visibility: 'hidden'`` property. That is how it is rendered by the server,
 and how the client is going to receive it. Our visitors can't see the content until the ``useEffect`` hook is executed.
 Even if this approach slightly increases the time until visitors see the blog, we still benefit from 
-server-side rendering: The DOM is already rendered by the server, so the time still is faster than with a usual single-page app.
+server-side rendering: The DOM is already rendered by the server, so the time is faster than with a usual single-page app.
 Also, the contents of the page are directly visible in the page HTML code, which brings benefits concerning Google and other 
 search engines.
+
+## When to use context in React?
+If you have only a few props that you need to pass to a component's children and nesting is not deep, context may introduce
+additional complexity that should better be avoided. 
+
+Instead, context can be applied in those cases were some data or functionality needs to be accessible by many components in different levels
+of your DOM. Another example for a good context use case is i18n. Your components contain text probably on all levels of the component tree.
+
+
+It should be noted that not in all cases, you want to implement the context provider on the top level of your app
+as we did it here. It is also is possible to create a context provider that only serves a subtree of your app. Let's take
+a complex table as an example which displays data about items, but it also can be filtered by different attributes, rows 
+include checkboxes and buttons which trigger actions, etc. If this table becomes fairly complex, it might make sense
+to introduce a new context at the top level of this table which provides functions for managing the state of this table,
+potentially via a _useReducer_. All subcomponents of the table now can directly use these functions, which makes the app simpler.
