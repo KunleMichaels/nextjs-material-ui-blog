@@ -1,0 +1,34 @@
+
+      <?xml version="1.0" encoding="UTF-8"?>
+      <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+          
+                      <url>
+                          <loc>https://devx.sh//404.tsx</loc>
+                      </url>
+                  
+                      <url>
+                          <loc>https://devx.sh//index.tsx</loc>
+                      </url>
+                  
+                      <url>
+                          <loc>https://devx.sh//blog/[slug].tsx</loc>
+                      </url>
+                  
+                      <url>
+                          <loc>https://devx.sh//topics/[topic].tsx</loc>
+                      </url>
+                  
+                      <url>
+                          <loc>https://devx.sh//topics/index.tsx</loc>
+                      </url>
+                  
+                      <url>
+                          <loc>https://devx.sh/posts/blog-with-next-js-react-material-ui-and-typescript</loc>
+                      </url>
+                  
+                      <url>
+                          <loc>https://devx.sh/posts/material-ui-toggle-theme</loc>
+                      </url>
+                  
+      </urlset>
+  
