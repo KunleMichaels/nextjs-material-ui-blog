@@ -18,7 +18,7 @@ async function generateSiteMap() {
     ),
   )
 
-  pages = [...pages, ...topics.map((t) => `/topics/${t}`)]
+  pages = [...pages, ...topics.map((t) => `/topics/${t.replace(' ', '-')}`)]
 
   const sitemap =
     '<?xml version="1.0" encoding="UTF-8"?>\n' +
