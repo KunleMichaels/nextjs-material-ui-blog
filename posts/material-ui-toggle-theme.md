@@ -153,7 +153,7 @@ If we kept our app as it is, the standard theme would be the dark theme, and cli
 this way, even if they prefer the light mode. This would cause the client-side Javascript code to override the server styles
 as soon as it is ready, potentially leading to flashing content.
 
-We can deal with this situation in _app.tsx_ as follows:
+We can deal with this situation in _\_app.tsx_ as follows:
 
 ```typescript
 const MyApp = ({ Component, pageProps }: AppProps): React.ReactNode => {
