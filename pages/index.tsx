@@ -20,7 +20,7 @@ const Home = ({ postsData, sortedTopics }: { postsData: PostData[]; sortedTopics
         <title>{NAME}: Full Stack Web Development - a tech blog.</title>
         <meta
           name="description"
-          content={`{NAME} is a blog on various topics in full stack development
+          content={`${NAME} is a blog on various topics in full stack development
             with a focus on current technologies like React, NextJS and Go programming.`}
         />
       </Head>
