@@ -1,4 +1,4 @@
-This is the code of my personal blog.
+This is the code of my [personal blog](https://devx.sh).
 It is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 There is a series of articles on my blog describing how this project works under the hood, so if you are interested, have a look there.

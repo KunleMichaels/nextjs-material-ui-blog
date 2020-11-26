@@ -5,7 +5,7 @@ import { darkTheme as theme } from '../src/theme'
 import { NAME } from '../src/types/constants'
 
 export default class MyDocument extends Document {
-  render() {
+  render(): React.ReactElement {
     return (
       <Html lang="en">
         <Head>
@@ -13,6 +13,7 @@ export default class MyDocument extends Document {
           <meta name="apple-mobile-web-app-title" content={NAME} />
           <meta name="application-name" content={NAME} />
           <meta property="og:locale" content="en_GB" />
+          <link rel="icon" type="image/png" href="/devx.png" />
           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,500,700&display=swap" />
           <link
             rel="stylesheet"
