@@ -9,6 +9,7 @@ import TopicsDisplay from '../src/components/TopicsDisplay'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { Preview } from '../src/components/Preview'
 import Head from 'next/head'
+import { NAME, NAME_AND_DOMAIN } from '../src/types/constants'
 
 const Home = ({ postsData, sortedTopics }: { postsData: PostData[]; sortedTopics: string[] }): ReactElement => {
   const large = useMediaQuery('(min-width:700px)')
@@ -16,17 +17,17 @@ const Home = ({ postsData, sortedTopics }: { postsData: PostData[]; sortedTopics
   return (
     <>
       <Head>
-        <title>DevFullStack: Full Stack Web Development - a tech blog.</title>
+        <title>{NAME}: Full Stack Web Development - a tech blog.</title>
         <meta
           name="description"
-          content="DevFullStack is a blog on various topics in full stack development
-        with a focus on current technologies like React, NextJS and Go programming."
+          content={`${NAME} is a blog on various topics in full stack development
+            with a focus on current technologies like React, NextJS and Go programming.`}
         />
       </Head>
       <Grid container>
         <Grid item xs={12} className={styles.headings}>
           <Box p={5}>
-            <Typography variant={large ? 'h1' : 'h4'}>DevFullStack</Typography>
+            <Typography variant={large ? 'h1' : 'h4'}>{NAME_AND_DOMAIN}</Typography>
             <Typography className={styles.secondHeading} variant={large ? 'h3' : 'h6'}>
               A tech blog.
             </Typography>

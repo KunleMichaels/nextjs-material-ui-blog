@@ -31,6 +31,8 @@ takes care of all the necessary steps.
 
 ## Setting up the Next.js blog project
 
+*You can find the complete code shown in this post at https://github.com/FelixMohr/nextjs-material-ui-blog*
+
 ### Next.js with Typescript
 
 Starting a new Next.js is as easy as running ``npx create-next-app``. This command sets up the basic project structure to work with.
