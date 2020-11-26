@@ -31,11 +31,11 @@ takes care of all the necessary steps.
 
 ## Setting up the Next.js blog project
 
-*You can find the complete code shown in this post at https://github.com/FelixMohr/nextjs-material-ui-blog*
+*You can find the complete code shown in this post at [https://github.com/FelixMohr/nextjs-material-ui-blog](https://github.com/FelixMohr/nextjs-material-ui-blog)*
 
 ### Next.js with Typescript
 
-Starting a new Next.js is as easy as running ``npx create-next-app``. This command sets up the basic project structure to work with.
+Starting a new Next.js project is as easy as running ``npx create-next-app``. This command sets up the basic project structure to work with.
 Just as the [create react app](https://create-react-app.dev/) project that you are probably familiar with, create-next-app automatically 
 adds some scripts to your package.json to build your project or to run it in development mode. For running it, execute ``yarn dev``.
 To integrate Typescript into your project, just create an empty _tsconfig.json_ (``touch tsconfig.json``). Next.js will detect 

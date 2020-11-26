@@ -1,7 +1,7 @@
 This is the code of my [personal blog](https://devx.sh).
 It is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-There is a series of articles on my blog describing how this project works under the hood, so if you are interested, have a look there.
+There is a [series of articles](https://devx.sh/blog/blog-with-next-js-react-material-ui-and-typescript) on my blog describing how this project works under the hood, so if you are interested, have a look there.
 
 ## Executing this project
 
