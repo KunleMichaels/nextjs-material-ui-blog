@@ -27,11 +27,14 @@ const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void>
   // Run the middleware
   await runMiddleware(req, res, cors)
 
+  const env = 'Preview'
+
   const statusesUrl = await new Promise<string>((resolve) => {
     fetch(DEPLOYMENTS_URL)
       .then((response) => response.json())
       .then((data) => {
-        resolve(data[0]['statuses_url'])
+        const matchingData = data.find((d) => d['environment'] === env)
+        resolve(matchingData['statuses_url'])
       })
   })
   console.log(statusesUrl)
