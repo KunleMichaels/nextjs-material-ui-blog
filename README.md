@@ -9,7 +9,7 @@
 <h1 align="center">DevX.sh</h1>
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
-![Deployment Status](https://img.shields.io/endpoint?url=https%3A%2F%2Fdevx.sh%2Fapi%2Fdeployment)
+[![Deployment Status](https://img.shields.io/endpoint?url=https%3A%2F%2Fdevx.sh%2Fapi%2Fdeployment)](https://devx.sh)
 
 
 This is the code of my [personal blog](https://devx.sh).
