@@ -1,15 +1,15 @@
 
 <p align="center">
-
 <img
-    width=300px
+    width=160px
     src="public/logo/blue.png"
     alt="DevX.sh"
 />
+</p>
+<h1 align="center">DevX.sh</h1>
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
-</p>
 
 This is the code of my [personal blog](https://devx.sh).
 It is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
