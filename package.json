@@ -12,6 +12,7 @@
     "@material-ui/icons": "^4.9.1",
     "@material-ui/styles": "^4.10.0",
     "cors": "^2.8.5",
+    "deployment-badge": "^1.0.0",
     "gray-matter": "^4.0.2",
     "marked": "^1.2.5",
     "next": "10.0.2",

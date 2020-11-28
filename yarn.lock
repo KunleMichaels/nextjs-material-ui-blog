@@ -1711,6 +1711,13 @@ depd@~1.1.2:
   resolved "https://registry.yarnpkg.com/depd/-/depd-1.1.2.tgz#9bcd52e14c097763e749b274c4346ed2e560b5a9"
   integrity sha1-m81S4UwJd2PnSbJ0xDRu0uVgtak=
 
+deployment-badge@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/deployment-badge/-/deployment-badge-1.0.0.tgz#2022735da963ca8792ae6f4bdaf48528369110c2"
+  integrity sha512-H/GXAqxCkU6m/521zmPlPMOuWImh2VjgF/2z9zGYGg+amVyGlw1nY1Kw7SKajiXaaPlDRgvT9vXkairpr8YO3Q==
+  dependencies:
+    cors "^2.8.5"
+
 des.js@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/des.js/-/des.js-1.0.1.tgz#5382142e1bdc53f85d86d53e5f4aa7deb91e0843"
