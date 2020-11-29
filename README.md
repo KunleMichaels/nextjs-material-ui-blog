@@ -9,12 +9,13 @@
 <h1 align="center">DevX.sh</h1>
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
+[![Deployment Status](https://img.shields.io/endpoint?url=https%3A%2F%2Fdevx.sh%2Fapi%2Fdeployment)](https://devx.sh)
 
 
 This is the code of my [personal blog](https://devx.sh).
 It is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-There is a series of articles on my blog describing how this project works under the hood, so if you are interested, have a look there.
+There is a [series of articles](https://devx.sh/blog/blog-with-next-js-react-material-ui-and-typescript) on my blog describing how this project works under the hood, so if you are interested, have a look there.
 
 ## Executing this project
 

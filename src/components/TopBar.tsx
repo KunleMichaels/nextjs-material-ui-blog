@@ -23,10 +23,10 @@ const useStyles = makeStyles({
     transition: 'transform .5s',
   },
   toolbar: {
-    paddingLeft: '10%',
+    paddingLeft: '5%',
   },
   toolbarContent: {
-    paddingLeft: 50,
+    paddingLeft: 70,
   },
   toolbarRight: {
     right: 0,
@@ -45,7 +45,19 @@ export const TopBar = (): ReactElement => {
       <Toolbar className={classes.toolbar}>
         <Link href="/">
           <a>
-            <Typography variant="h6">{NAME_AND_DOMAIN}</Typography>
+            <img
+              src="/logo/white.png"
+              height="25px"
+              alt="devx.sh"
+              style={{ paddingRight: 10, verticalAlign: 'bottom' }}
+            />
+          </a>
+        </Link>
+        <Link href="/">
+          <a>
+            <Typography variant="h6" style={!isDark ? { color: '#fff' } : {}}>
+              {NAME_AND_DOMAIN}
+            </Typography>
           </a>
         </Link>
         <div className={classes.toolbarContent}>
